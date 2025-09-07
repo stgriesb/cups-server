@@ -6,7 +6,7 @@ RUN apt-get update -qq && \
     apt-get clean && find /var/lib/apt/lists -type f -delete
 
 COPY /avahi/avahi-daemon /etc/init.d/
-COPY /conf/*.conf /etc/cups/
+COPY /conf/*.conf /tmp/
 COPY docker-entrypoint.sh /tmp/
 
 RUN chmod +x /tmp/docker-entrypoint.sh

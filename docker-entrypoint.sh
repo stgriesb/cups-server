@@ -7,6 +7,11 @@ if ! id "$CUPS_ADMIN_USERNAME" >/dev/null 2>&1; then
     echo "$CUPS_ADMIN_USERNAME:$CUPS_ADMIN_PASSWORD" | chpasswd
 fi
 
+if [ ! -f /etc/cups/cupsd.conf ]; then
+  cp -n /tmp/*.conf /etc/cups/
+fi
+
+
 echo "### Start DBUS service ###"
 /etc/init.d/dbus start
 
