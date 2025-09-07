@@ -1,0 +1,20 @@
+services:
+  cups-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cups-server
+    hostname: cups
+    restart: unless-stopped
+    ports:
+      - '631:631/tcp'
+    volumes:
+      - '${VOLUME}/var-spool:/var/spool'
+      - '${VOLUME}/var-log:/var/log/cups'
+      - '${VOLUME}/var-cache:/var/cache/cups'
+      - '${VOLUME}/etc-cups:/etc/cups'
+      - '${VOLUME}/etc-avahi:/etc/avahi'
+      - '/etc/localtime:/etc/localtime:ro'
+    environment:
+      CUPS_ADMIN_USERNAME: admin
+      CUPS_ADMIN_PASSWORD: admin
