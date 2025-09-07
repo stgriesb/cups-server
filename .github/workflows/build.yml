@@ -5,6 +5,9 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  schedule:
+    # Monthly for now
+    - cron: '30 2 1 * *'
 
 jobs:
   build:
